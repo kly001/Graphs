@@ -13,7 +13,7 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        self.vertices(vertex_id) = set()
+        self.vertices[vertex_id] = set()
         
 
     def add_edge(self, v1, v2):
@@ -70,17 +70,17 @@ class Graph:
            # make a set to track if you have visited a node before
         visited = set()
            # while the stack is not empty,
-        while s.size > 0:
+        while s.size() > 0:
            # pop off whatever is on top; current node
             current_node = s.pop()
            # if the node has not been visited, 
-           if current_node is not visited:
+            if current_node is not visited:
            # mark as visited
                 visited.add(current_node)
            # get its neighbors
             neighbors = self.get_neighbors(current_node) 
            # iterate over neighbors,
-           for neighbor in neighbors:
+            for neighbor in neighbors:
            # add to the stack
                 s.push(neighbor)
 
@@ -91,7 +91,15 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        if visited is None:
+            visited = set()
+        visited.add(starting_vertex)
+
+        for neighbor in self.vertices[starting_vertex] - visited:
+            self.dfs_recursive(neighbor, visited)
+        print(visited)
+
+        # Source: https://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
 
     def bfs(self, starting_vertex, destination_vertex):
         """

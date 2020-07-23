@@ -104,6 +104,7 @@ class Graph:
             if neighbor not in visited:
         # recurse on the neighbor
                 self.dfs_recursive(neighbor, visited)
+                
         
  
     def bfs(self, starting_vertex, destination_vertex):
@@ -201,15 +202,14 @@ class Graph:
         if path is None:
             path = []
         
-        if starting_vertex not in visited:
-            visited.add(starting_vertex)
-            path_copy = path.copy()
-            path_copy.append(starting_vertex)
-            if starting_vertex == destination_vertex:
-                return path_copy
-            for neighbor in self.get_neighbors(starting_vertex):
-                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
-                if new_path:
+        visited.add(starting_vertex)
+        path = path + [starting_vertex]
+        if starting_vertex == destination_vertex:
+            return path
+        for neighbor in self.get_neighbors(starting_vertex):
+            if neighbor not in visited:
+                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path)
+                if neighbor:
                     return new_path
         return None
 

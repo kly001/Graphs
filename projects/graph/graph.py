@@ -86,14 +86,14 @@ class Graph:
            # add to the stack
                 s.push(neighbor)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited = set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
-        visited = set()
+        
         # mark this vertex as visited
         visited.add(starting_vertex)
         print("starting_vertex: ",starting_vertex)
@@ -143,11 +143,11 @@ class Graph:
                     # path_copy = current_path[:]
 
                         ###   OR   ###
+
                     path_copy = list(current_path)
                     path_copy.append(neighbor)
         # add to the queue
                     q.enqueue(path_copy)
-
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -155,7 +155,34 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # create a stack
+        s = Stack()
+        # push a path to the starting vertex
+        s.push( [starting_vertex] )
+        # create a set to store visited vertices
+        visited = set()
+        # while stack is not empty
+        while s.size() > 0:
+            # pop the first path
+            path = s.pop()
+            # grab the vertex from the end of the path
+            v = path[-1]
+            # Check if it has been visited
+            # if it has not,
+            if v not in visited:
+                # Mark it as visited
+                visited.add(v)
+                # check if it is the target
+                if v == destination_vertex:
+                    # if so, return path
+                    return path
+                for neighbor in self.get_neighbors(v):
+                    path_copy = path.copy() 
+                    path_copy.append(neighbor)
+                    s.push(path_copy)
+
+
+
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
@@ -165,7 +192,6 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph

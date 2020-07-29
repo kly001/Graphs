@@ -14,10 +14,17 @@ island_counter(islands) # returns 4
 
 What do we call a group of nodes? => Connected components
 
-2. 
+2. Build your graph or define getNeighbors()
 
-3. 
+
+3. Choose your algorithm
 
 
 
 """
+islands = [[0, 1, 0, 1, 0],
+           [1, 1, 0, 1, 1],
+           [0, 0, 1, 0, 0],
+           [1, 0, 1, 0, 0],
+           [1, 1, 0, 0, 0]]
+

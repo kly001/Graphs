@@ -103,7 +103,7 @@ class Graph:
             # if it is not visited,
                 if neighbor not in visited:
             # recurse on the neighbor
-                    self.dfs_recursive(neighbor, visited)
+                    self.dft_recursive(neighbor, visited)
                     
         
  
@@ -115,7 +115,8 @@ class Graph:
         """
         # make a queue
         q = Queue()
-        # make aset to track visited nodes
+        # make a set to track visited nodes
+        
         visited = set()
 
         path = [starting_vertex]
@@ -138,13 +139,13 @@ class Graph:
                 visited.add(current_node)
         # for each neighbor
                 for neighbor in self.get_neighbors(current_node):
-                    # path_copy = current_path[:]
-                    # path_copy.append(neighbor)
+                    path_copy = current_path.copy()
+                    path_copy.append(neighbor)
 
                         ###   OR   ###
 
-                    path_copy = list(current_path)
-                    path_copy.append(neighbor)
+                    # path_copy = list(current_path)
+                    # path_copy.append(neighbor)
         # add to the queue
                     q.enqueue(path_copy)
 
@@ -194,7 +195,7 @@ class Graph:
 
         This should be done using recursion.
         """
-        print("path: ",path)
+        print("dfs_recursive path: ",path)
 
         visited.add(vertex)
     
@@ -209,6 +210,7 @@ class Graph:
                 result = self.dfs_recursive(neighbor, destination_vertex, path + [neighbor], visited)
                 if result is not None:
                     return result
+
 
 
 

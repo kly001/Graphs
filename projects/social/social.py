@@ -6,11 +6,15 @@ class SocialGraph:
     def __init__(self):
         self.last_id = 0
         self.users = {}
-        self.friendships = {}
+        self.friendships = {} # adjacency list representation of a graph
 
     def add_friendship(self, user_id, friend_id):
         """
         Creates a bi-directional friendship
+
+        Therefore creates an undirected graph
+
+        Makes two friendships
         """
         if user_id == friend_id:
             print("WARNING: You cannot be friends with yourself")

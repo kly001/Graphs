@@ -69,22 +69,49 @@ class Graph:
         s.push(starting_vertex)
            # make a set to track if you have visited a node before
         visited = set()
+        visited.add(starting_vertex)
            # while the stack is not empty,
         while s.size() > 0:
            # pop off whatever is on top; current node
             current_node = s.pop()
            # if the node has not been visited, 
-            if current_node not in visited:
+            # if current_node not in visited:
             # print current node
-                print("current node :",current_node)
+            print(current_node)
            # mark as visited
-                visited.add(current_node)
+                # visited.add(current_node)
            # get its neighbors
             neighbors = self.get_neighbors(current_node) 
            # iterate over neighbors,
             for neighbor in neighbors:
+                if neighbor not in visited:
+                    visited.add(neighbor)
            # add to the stack
-                s.push(neighbor)
+                    s.push(neighbor)
+
+            ## COPY ##
+        #        # make a stack
+        # s = Stack()
+        #    # push on starting node
+        # s.push(starting_vertex)
+        #    # make a set to track if you have visited a node before
+        # visited = set()
+        #    # while the stack is not empty,
+        # while s.size() > 0:
+        #    # pop off whatever is on top; current node
+        #     current_node = s.pop()
+        #    # if the node has not been visited, 
+        #     if current_node not in visited:
+        #     # print current node
+        #         print("current node :",current_node)
+        #    # mark as visited
+        #         visited.add(current_node)
+        #    # get its neighbors
+        #     neighbors = self.get_neighbors(current_node) 
+        #    # iterate over neighbors,
+        #     for neighbor in neighbors:
+        #    # add to the stack
+        #         s.push(neighbor)
 
     def dft_recursive(self, starting_vertex, visited = set()):
         """

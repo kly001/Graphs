@@ -33,24 +33,32 @@ class Stack():
 #         self.data = data
 #         self.left = left
 #         self.right = right
+    
 
+    def earliest_ancestor(self, ancestors, starting_node):
+    #  Initiate a stack
+        s = Stack()
+    #  Push onto it the starting_node
+        s.push( [starting_node])
+    # Create a set to keep track of visited nodes
+        visited = set()
 
-def earliest_ancestor(self, ancestors, starting_node):
-    s = Stack()
-    s.push( [starting_node])
-    visited = set()
-
-    while s.size>0:
-        path = s.pop()
-        node = path[-1]
-
-        if node not in visited:
-            visited.add(node)
-        
-        if node == ancestors:
-            return path
-        # print(path)
-        
+    # while the stack is not empty
+        while s.size > 0:
+    # pop the first path      
+            path = s.pop()
+    # grab the node from the bottom of the stack(end of the path)
+            node = path[-1]
+    # if the node has not been visited
+            if node not in visited:
+    # mark it as visited
+                visited.add(node)
+            
+            # if node == ancestors:
+            #     return path
+            # # print(path)
+        return None
+            
         
 
 
